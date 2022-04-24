@@ -17,6 +17,7 @@ let mapleader = " "
 nnoremap <Leader> <C-W>
 " doom emacs dired map
 nnoremap <Leader>. :edit 
+nnoremap <Leader>, :tabedit 
 
 " fugitive
 nnoremap <leader>gg :Git<CR>:wincmd r<CR>
