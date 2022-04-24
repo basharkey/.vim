@@ -19,8 +19,8 @@ nnoremap <Leader> <C-W>
 nnoremap <Leader>. :edit 
 
 " fugitive
-nnoremap <leader>gg :Git<CR>:wincmd r<CR><CR>
-nnoremap <leader>gp :Git push<CR><CR>
+nnoremap <leader>gg :Git<CR>:wincmd r<CR>
+nnoremap <leader>gp :Git push<CR>
 
 " netrw customizations
 " remove banner
