@@ -13,11 +13,17 @@ set wildmode=longest,list
 " map leader to space
 let mapleader = " "
 
+" reload config
+nnoremap <Leader>rr :source ~/.vim/vimrc<CR>
+
 " map space to window management key
 nnoremap <Leader> <C-W>
-" doom emacs dired map
-nnoremap <Leader>. :edit 
-nnoremap <Leader>, :tabedit 
+
+" <C-R>=getcwd()<CR> evaluate getcwd() and put output into command line without executing it
+" https://vi.stackexchange.com/questions/16972/place-a-string-onto-the-command-line-without-execution
+" creates :edit /current/working/directory/
+nnoremap <Leader>. :edit <C-R>=getcwd()<CR>/
+nnoremap <Leader>, :tabedit <C-R>=getcwd()<CR>/
 
 " fugitive
 nnoremap <leader>gg :Git<CR>:wincmd r<CR>
