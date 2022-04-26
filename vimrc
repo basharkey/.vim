@@ -16,23 +16,35 @@ let mapleader = " "
 " reload config
 nnoremap <Leader>rr :source ~/.vim/vimrc<CR>
 
+nnoremap <Leader>, :buffer 
+" list buffers
+nnoremap <Leader>bl :ls<CR>
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprevious<CR>
+
 " map space to window management key
 nnoremap <Leader> <C-W>
 
-" <C-R>=getcwd()<CR> evaluate getcwd() and put output into command line without executing it
-" https://vi.stackexchange.com/questions/16972/place-a-string-onto-the-command-line-without-execution
-" creates :edit /current/working/directory/
-nnoremap <Leader>. :edit <C-R>=getcwd()<CR>/
-nnoremap <Leader>, :tabedit <C-R>=getcwd()<CR>/
+nnoremap <Leader>. :edit 
+nnoremap <Leader>> :tabedit 
 
 " fugitive
 nnoremap <leader>gg :Git<CR>:wincmd r<CR>
 nnoremap <leader>gp :Git push<CR>
 
+" convert github markdown to html
+"autocmd BufWritePost *.md !pandoc -r gfm -w html % -o %.html
+nnoremap <leader>mm :!pandoc -r gfm -w html % -o %.html<CR><CR>
+nnoremap <leader>mo :!firefox %.html &<CR><CR>
+
 " netrw customizations
 " remove banner
 let g:netrw_banner = 0
 
-" changes the cwd to the dir of the current buffer whenever you switch buffers
-set autochdir
+" status line always visible
+set laststatus=2
+" status line display current working dir
+set statusline=%!getcwd()
 
+" changes current wording dir to dir of current buffer
+set autochdir
