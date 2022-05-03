@@ -2,12 +2,14 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 syntax on
 
 " wayland clipboard fix (requires wl-clipboard)
-xnoremap "+y y:call system("wl-copy", @")<cr>
-nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
-nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
+if $XDG_SESSION_TYPE == "wayland"
+    xnoremap "+y y:call system("wl-copy", @")<CR>
+    nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<CR>p
+    nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<CR>p
+endif
 
 " bash like path tab complete
-set wildmode=longest,list
+set wildmode=list:longest
 
 " key maps
 " map leader to space
@@ -16,17 +18,17 @@ let mapleader = " "
 " reload config
 nnoremap <Leader>rr :source ~/.vim/vimrc<CR>
 
-nnoremap <Leader>, :buffer 
+nnoremap <Leader>> :ls<CR>:buffer 
 " list buffers
 nnoremap <Leader>bl :ls<CR>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprevious<CR>
 
 " map space to window management key
-nnoremap <Leader> <C-W>
+nnoremap <Leader> <C-w>
 
 nnoremap <Leader>. :edit 
-nnoremap <Leader>> :tabedit 
+nnoremap <Leader>, :tabedit 
 
 " fugitive
 nnoremap <leader>gg :Git<CR>:wincmd r<CR>
@@ -37,9 +39,14 @@ nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>mm :!pandoc -r gfm -w html % -o %.html<CR><CR>
 nnoremap <leader>mo :!firefox %.html &<CR><CR>
 
+" unmap F1 help, definitely don't hit this by accident a lot
+nnoremap <F1> <nop>
+
 " netrw customizations
 " remove banner
 let g:netrw_banner = 0
+" tree view
+let g:netrw_liststyle = 3
 
 " status line always visible
 set laststatus=2
