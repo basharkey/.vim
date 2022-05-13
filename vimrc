@@ -33,6 +33,8 @@ nnoremap <Leader>, :tabedit
 " fugitive
 nnoremap <leader>gg :Git<CR>:wincmd r<CR>
 nnoremap <leader>gp :Git -c push.default=current push<CR>
+nnoremap <leader>gc :Git checkout 
+nnoremap <leader>gb :Git checkout -b 
 
 " convert github markdown to html
 "autocmd BufWritePost *.md !pandoc -r gfm -w html % -o %.html
