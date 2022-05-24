@@ -42,7 +42,7 @@ nnoremap <leader>mm :!pandoc -r gfm -w html % -o %.html<CR><CR>
 nnoremap <leader>mo :!firefox %.html &<CR><CR>
 
 " unmap F1 help, definitely don't hit this by accident a lot
-nnoremap <F1> <nop>
+map <F1> <nop>
 
 " netrw customizations
 " remove banner
