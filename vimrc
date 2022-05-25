@@ -50,10 +50,17 @@ let g:netrw_banner = 0
 " tree view
 let g:netrw_liststyle = 3
 
-" status line always visible
+" status line
+" make always visible
 set laststatus=2
-" status line display current working dir
-set statusline=%!getcwd()
+" current git branch (requires fugitive)
+set statusline=%{fugitive#head()}
+" current file
+set statusline+=\ %F
+" current line/col
+set statusline+=%=\ line:%l\ col:%v
 
 " changes current wording dir to dir of current buffer
 set autochdir
+
+set autoindent
